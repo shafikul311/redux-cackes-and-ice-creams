@@ -3,12 +3,10 @@ import { fetchUsers } from "../redux";
 import { connect } from "react-redux";
 
 function UserContainer({ usersData, fetchUsers }) {
-
-
    useEffect(() => {
       fetchUsers();
    }, []);
-
+   // console.log(usersData)
 
    return usersData.loading ? (
       <h2>Loading</h2>
@@ -17,10 +15,13 @@ function UserContainer({ usersData, fetchUsers }) {
    ) : (
       <div>
          <h2>User List</h2>
-         <div>
+         <h2> Total users : {usersData.users.length}</h2>
+         <div style={{ textAlign: "center" }}>
             {usersData &&
                usersData.users &&
-               usersData.users.map((user) => <p>{user.name}</p>)}
+               usersData.users.map((user) => (
+                  <p key={user.name}>{user.name}</p>
+               ))}
          </div>
       </div>
    );
@@ -28,7 +29,7 @@ function UserContainer({ usersData, fetchUsers }) {
 
 const mapStateToProps = (state) => {
    return {
-      usersData: state.users,
+      usersData: state.usersData,
    };
 };
 
