@@ -16,7 +16,7 @@ const NewCakeContainer = (props) => {
          }}
       >
          <h1>Number Of cakes {props.numOfCakes}</h1>
-         <input type="text" value={number} onChange={e=> setNumber(e.target.value)} />
+         <input type="number" value={number} onChange={e=> setNumber(e.target.value)} />
          <button onClick={()=> props.buyCake(number)}>Buy Cakes </button>
       </div>
    );
